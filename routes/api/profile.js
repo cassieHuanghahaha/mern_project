@@ -106,7 +106,7 @@ router.post(
   }
 );
 
-//@route Get api/profie/me
+//@route Get api/profile/me
 //@desc Get all profiles
 //@access Public
 router.get("/", async (req, res) => {
@@ -119,7 +119,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-//@route Get api/profie/user/:user_id
+//@route Get api/profile/user/:user_id
 //@desc Get profile by user ID
 //@access Public
 router.get("/user/:user_id", async (req, res) => {
