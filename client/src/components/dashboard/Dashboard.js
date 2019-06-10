@@ -24,7 +24,7 @@ const Dashboard = ({
       <h1 className='large text-primary'>Dashboard</h1>
       <p className='lead'>
         <i className='fas fa-user' />
-        Welcome {user && user.name}
+        {user && user.name.trim().split(" ")[0]}, welcome!
       </p>
       {profile != null ? (
         <Fragment>
@@ -34,7 +34,7 @@ const Dashboard = ({
           <div className='my-2'>
             <button className='btn btn-danger' onClick={() => deleteAccount()}>
               <i className='fas fa-user-minus' />
-              Delete My account
+              Delete My Account
             </button>
           </div>
         </Fragment>
