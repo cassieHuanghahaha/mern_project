@@ -8,21 +8,26 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>Developers</Link>
+        <i className='fas fa-users' />
+        <span className='hide-sm' />
+        <Link to='/profiles'>Find Students</Link>
       </li>
       <li>
-        <Link to='/posts'>Posts</Link>
+        <Link to='/posts'>
+          <i className='fas fa-clipboard' /> <span className='hide-sm' />
+          Posts
+        </Link>
       </li>
       <li>
         <Link to='/dashboard'>
           <i className='fas fa-user' />{" "}
-          <span className='hide-sm'>Dashboard_DD </span>
+          <span className='hide-sm'>About me </span>
         </Link>
       </li>
       <li>
         <a onClick={logout} href='#!'>
           <i className='fas fa-sign-out-alt' />{" "}
-          <span className='hide-sm'>Logout Heihei </span>
+          <span className='hide-sm'>Logout </span>
         </a>
       </li>
     </ul>
@@ -30,25 +35,23 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const gusetLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>Developers</Link>
+        <Link to='/profiles'>Find Students</Link>
       </li>
-      <li>
+      {/* <li>
         <a href='#!'>Developers_heiehi</a>
+      </li> */}
+      <li>
+        <Link to='/register'>Register</Link>
       </li>
       <li>
-        <Link to='/register'>Register_aha</Link>
-      </li>
-      <li>
-        <Link to='/login'>Login_oh</Link>
+        <Link to='/login'>Login</Link>
       </li>
     </ul>
   );
   return (
     <nav className='navbar bg-dark'>
       <h1>
-        <Link to='/'>
-          <i className='fas fa-code' /> CassieConnector
-        </Link>
+        <Link to='/'>STEM Community</Link>
       </h1>
       {!loading && (
         <Fragment>{isAuthenticated ? authLinks : gusetLinks}</Fragment>

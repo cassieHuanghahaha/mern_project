@@ -4,20 +4,20 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user"
   },
-  company: {
+  college: {
     type: String
   },
-  website: {
-    type: String
-  },
-  location: {
-    type: String
-  },
+  website: { type: String },
+  location: { type: String },
   status: {
     type: String,
     required: true
   },
   skills: {
+    type: [String],
+    required: true
+  },
+  classtoken: {
     type: [String],
     required: true
   },
@@ -113,4 +113,5 @@ const ProfileSchema = new mongoose.Schema({
   }
 });
 
+ProfileSchema.index({ "$**": "text" });
 module.exports = Profile = mongoose.model("profile", ProfileSchema);

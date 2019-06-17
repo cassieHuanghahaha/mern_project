@@ -50,9 +50,10 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     const {
-      company,
       website,
+      college,
       location,
+      classtoken,
       bio,
       status,
       githubusername,
@@ -67,9 +68,16 @@ router.post(
     //build profile obj
     const profileFields = {};
     profileFields.user = req.user.id;
-    if (company) profileFields.company = company;
-    if (website) profileFields.website = website;
+
+    if (college) profileFields.college = college;
     if (location) profileFields.location = location;
+    if (classtoken) {
+      profileFields.classtoken = classtoken
+        .split(",")
+        .map(classitem => classitem.trim());
+    }
+
+    if (website) profileFields.website = website;
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;

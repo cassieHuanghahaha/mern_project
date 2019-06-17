@@ -11,7 +11,8 @@ const EditProfile = ({
   history
 }) => {
   const [formData, setFormData] = useState({
-    company: "",
+    classtoke: "",
+    college: "",
     website: "",
     location: "",
     status: "",
@@ -30,9 +31,10 @@ const EditProfile = ({
     getCurrentProfile();
 
     setFormData({
-      company: loading || !profile.company ? "" : profile.company,
       website: loading || !profile.website ? "" : profile.website,
-      location: loading || !profile.location ? "" : profile.location,
+      classtoken: loading || !profile.classtoken ? "" : profile.classtoken,
+      college: loading || !profile.college ? "" : profile.college,
+      // location: loading || !profile.location ? "" : profile.location,
       status: loading || !profile.status ? "" : profile.status,
       skills: loading || !profile.skills ? "" : profile.skills.join(","),
       githubusername:
@@ -47,9 +49,9 @@ const EditProfile = ({
   }, [loading, getCurrentProfile]);
 
   const {
-    company,
     website,
-    location,
+    college,
+    classtoken,
     status,
     skills,
     githubusername,
@@ -78,30 +80,29 @@ const EditProfile = ({
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
           <select name='status' value={status} onChange={e => onChange(e)}>
-            <option value='0'>* Select Professional Status</option>
-            <option value='Developer'>Developer</option>
-            <option value='Junior Developer'>Junior Developer</option>
-            <option value='Senior Developer'>Senior Developer</option>
-            <option value='Manager'>Manager</option>
-            <option value='Student or Learning'>Student or Learning</option>
-            <option value='Instructor'>Instructor or Teacher</option>
-            <option value='Intern'>Intern</option>
+            <option value='0'>* Select Your Status</option>
+            <option value='Freshman'>Freshman</option>
+            <option value='Sophomore'>Sophomore</option>
+            <option value='Junior'>Junior</option>
+            <option value='Senior'>Senior</option>
+            <option value='Fifth Year'>Fifth Year</option>
+            <option value='Master'>Master</option>
+            <option value='PhD'>PhD</option>
             <option value='Other'>Other</option>
           </select>
-          <small className='form-text'>
-            Give us an idea of where you are at in your career
-          </small>
+          <small className='form-text'>Give us an idea of where you are</small>
         </div>
         <div className='form-group'>
           <input
             type='text'
-            placeholder='Company'
-            name='company'
-            value={company}
+            placeholder='College'
+            name='College'
+            value={college}
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
-            Could be your own company or one you work for
+            Could be your current college. If you are a master or PhD, please
+            fill in "Graduate Division".
           </small>
         </div>
         <div className='form-group'>
@@ -113,10 +114,10 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
-            Could be your own or a company website
+            Please fill in your personal website if you have one?
           </small>
         </div>
-        <div className='form-group'>
+        {/* <div className='form-group'>
           <input
             type='text'
             placeholder='Location'
@@ -127,7 +128,7 @@ const EditProfile = ({
           <small className='form-text'>
             City & state suggested (eg. Boston, MA)
           </small>
-        </div>
+        </div> */}
         <div className='form-group'>
           <input
             type='text'
@@ -137,7 +138,21 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
+            Please use comma separated values (eg. PCB design, Python, C++,
+            Machine learning)
+          </small>
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Classes'
+            name='classtoken'
+            value={classtoken}
+            onChange={e => onChange(e)}
+          />
+          <small className='form-text'>
+            Please fill in the classes you have already token and use comma
+            separated values (eg. ECE 12, ECE 281, CSE 256)
           </small>
         </div>
         <div className='form-group'>
@@ -149,8 +164,7 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
-            If you want your latest repos and a Github link, include your
-            username
+            Your latest repos and a Github link will be shown in your profile.
           </small>
         </div>
         <div className='form-group'>

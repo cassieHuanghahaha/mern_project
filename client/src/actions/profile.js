@@ -220,3 +220,26 @@ export const deleteAccount = () => async dispatch => {
       });
     }
 };
+
+// Search profiles
+export const searchProfiles = searchString => async dispatch => {
+  // dispatch(setProfileLoading());
+
+  var profileRoute = "/api/profile/all";
+
+  if (searchString) {
+    profileRoute = "/api/search/profiles/" + searchString;
+  }
+  try {
+    const res = await axios.get(profileRoute);
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};

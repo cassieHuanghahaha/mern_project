@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const ProfileTop = ({
   profile: {
     status,
-    company,
+    college,
     location,
     website,
     social,
@@ -16,9 +16,9 @@ const ProfileTop = ({
       <img class='round-img my-1' src={avatar} alt='' />
       <h1 class='large'>{name}</h1>
       <p class='lead'>
-        {status} {company && <span>at {company}</span>}
+        {status} {college && <span>at {college}</span>}
       </p>
-      <p>{location && <span>{location}</span>}</p>
+      {/* <p>{location && <span>{location}</span>}</p> */}
       <div class='icons my-1'>
         {website && (
           <a href={website} target='_blank' rel='noopener noreferrer'>

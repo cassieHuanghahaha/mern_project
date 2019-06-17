@@ -5,14 +5,20 @@ const ProfileAbout = ({
   profile: {
     bio,
     skills,
+    classtoken,
     user: { name }
   }
 }) => (
   <div class='profile-about bg-light p-2'>
-    {bio && (
+    {bio ? (
       <Fragment>
         <h2 class='text-primary'>{name.trim().split(" ")[0]}'s Bio</h2>
         <p>{bio}</p>
+      </Fragment>
+    ) : (
+      <Fragment>
+        <h2 class='text-primary'>{name.trim().split(" ")[0]}'s Bio</h2>
+        <p>{name.trim().split(" ")[0]} does not say anything.</p>
       </Fragment>
     )}
 
@@ -23,6 +29,17 @@ const ProfileAbout = ({
         <div key={index} classNmae='p-1'>
           <i className='fas fa-check' />
           {skill}
+        </div>
+      ))}
+    </div>
+
+    <div class='line' />
+    <h2 class='text-primary'>Token Classes</h2>
+    <div class='classes'>
+      {classtoken.map((classitem, index) => (
+        <div key={index} classNmae='p-1'>
+          <i className='fas fa-check' />
+          {classitem}
         </div>
       ))}
     </div>
