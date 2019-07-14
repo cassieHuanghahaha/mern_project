@@ -8,6 +8,7 @@ const ProfileSchema = new mongoose.Schema({
     type: String
   },
   website: { type: String },
+  major: { type: String },
   location: { type: String },
   status: {
     type: String,

@@ -27,12 +27,9 @@ const Login = ({ login, isAuthenticated }) => {
   }
   return (
     <Fragment>
-      <h1 className='large text-primary'>Sign In</h1>
-      <p className='lead'>
-        <i className='fas fa-user' /> Sign Into Your Account
-      </p>
-      <form className='form' onSubmit={e => onSubmit(e)}>
-        <div className='form-group' />
+      <h1 className='large text-primary text-center'>Sign In</h1>
+      <p className='lead text-center'>Dive into your tree hole</p>
+      <form className='form text-center' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
           <input
             type='email'
@@ -56,7 +53,7 @@ const Login = ({ login, isAuthenticated }) => {
 
         <input type='submit' className='btn btn-primary' value='Login' />
       </form>
-      <p className='my-1'>
+      <p className='my-1 text-center'>
         Don't have an account? <Link to='/register'>Sign Up</Link>
       </p>
     </Fragment>

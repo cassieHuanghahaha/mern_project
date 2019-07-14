@@ -4,9 +4,14 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const authLinks = (
     <ul>
+      <h1>
+        <Link to='/'>
+          <i className='fas fa-tree' /> <span>Tree Holes</span>
+        </Link>
+      </h1>
       <li>
         <i className='fas fa-users' />
         <span className='hide-sm' />
@@ -24,6 +29,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <span className='hide-sm'>About me </span>
         </Link>
       </li>
+      {!loading && isAuthenticated && <p className='tab-large'>{user.email}</p>}
+
       <li>
         <a onClick={logout} href='#!'>
           <i className='fas fa-sign-out-alt' />{" "}
@@ -34,12 +41,14 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
   const gusetLinks = (
     <ul>
+      <h1>
+        <Link to='/'>
+          <i className='fas fa-tree' /> <span>Tree Holes</span>
+        </Link>
+      </h1>
       <li>
         <Link to='/profiles'>Find Students</Link>
       </li>
-      {/* <li>
-        <a href='#!'>Developers_heiehi</a>
-      </li> */}
       <li>
         <Link to='/register'>Register</Link>
       </li>
@@ -50,9 +59,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
   return (
     <nav className='navbar bg-dark'>
-      <h1>
-        <Link to='/'>STEM Community</Link>
-      </h1>
+      {/* <h1>
+        <Link to='/'>
+          <i className='fas fa-tree' /> <span>Tree Holes</span>
+        </Link>
+      </h1> */}
       {!loading && (
         <Fragment>{isAuthenticated ? authLinks : gusetLinks}</Fragment>
       )}

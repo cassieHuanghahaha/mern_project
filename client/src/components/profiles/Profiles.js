@@ -9,7 +9,6 @@ import SearchProfiles from "../search/SearchProfiles";
 import { getProfiles } from "../../actions/profile";
 
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -18,13 +17,8 @@ const useStyles = makeStyles(theme => ({
     // gridTemplateColumns: "repeat(4, 1fr)",
     // gridGap: "10px",
     direction: "column",
-    alignItems: "center",
+    // alignItems: "stretch",
     justify: "center"
-  },
-
-  paper: {
-    height: 140,
-    width: 100
   }
 }));
 
@@ -46,7 +40,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
           </p>
           <SearchProfiles />
           <Grid container className={classes.root} spacing={2}>
-            <Grid item xs='auto' sm='auto'>
+            <Grid item>
               <Grid container justify='center' spacing={4}>
                 {profiles.length > 0 ? (
                   profiles.map(profile => (

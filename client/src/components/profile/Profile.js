@@ -26,7 +26,7 @@ const Profile = ({
         <Spinner />
       ) : (
         <Fragment>
-          <Link to='/profiles' className='btn btn-light'>
+          <Link to='/profiles' className='btn btn-dark'>
             Back to profiles
           </Link>
           {auth.isAuthenticated &&
@@ -37,7 +37,7 @@ const Profile = ({
               </Link>
             )}
           <div class='profile-grid my-1'>
-            <ProfileTop profile={profile} />
+            <ProfileTop profile={profile} auth={auth} />
             <ProfileAbout profile={profile} />
             <div className='profile-exp bg-white p-2'>
               <h2 className='text-primary'>Experience</h2>

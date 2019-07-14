@@ -4,17 +4,18 @@ import PropTypes from "prop-types";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
+  root: {
+    justifyContent: "center"
+  },
   card: {
     display: "grid",
     gridTemplateRows: "1fr auto",
@@ -53,7 +54,7 @@ const ProfileItem = ({
     location,
     skills,
     classtoken,
-    college
+    major
   }
 }) => {
   const classes = useStyles();
@@ -71,7 +72,8 @@ const ProfileItem = ({
             {name}
           </Typography>
           <Typography variant='body2' color='textSecondary' component='p'>
-            {status} {college && <span> at {college} college</span>}
+            <p>{status}</p>
+            <p>{major && <span> majoring in {major} </span>}</p>
           </Typography>
           <Typography>
             <ul>
@@ -91,7 +93,7 @@ const ProfileItem = ({
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions className={classes.actions}>
+      <CardActions style={{ justifyContent: "center" }}>
         <Link to={`/profile/${_id}`}>
           <Button size='small' color='primary'>
             View Profile

@@ -13,6 +13,7 @@ const EditProfile = ({
   const [formData, setFormData] = useState({
     classtoke: "",
     college: "",
+    major: "",
     website: "",
     location: "",
     status: "",
@@ -32,9 +33,10 @@ const EditProfile = ({
 
     setFormData({
       website: loading || !profile.website ? "" : profile.website,
-      classtoken: loading || !profile.classtoken ? "" : profile.classtoken,
+      classtoken:
+        loading || !profile.classtoken ? "" : profile.classtoken.join(","),
       college: loading || !profile.college ? "" : profile.college,
-      // location: loading || !profile.location ? "" : profile.location,
+      major: loading || !profile.major ? "" : profile.major,
       status: loading || !profile.status ? "" : profile.status,
       skills: loading || !profile.skills ? "" : profile.skills.join(","),
       githubusername:
@@ -51,6 +53,7 @@ const EditProfile = ({
   const {
     website,
     college,
+    major,
     classtoken,
     status,
     skills,
@@ -96,7 +99,7 @@ const EditProfile = ({
           <input
             type='text'
             placeholder='College'
-            name='College'
+            name='college'
             value={college}
             onChange={e => onChange(e)}
           />
@@ -104,6 +107,16 @@ const EditProfile = ({
             Could be your current college. If you are a master or PhD, please
             fill in "Graduate Division".
           </small>
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Major'
+            name='major'
+            value={major}
+            onChange={e => onChange(e)}
+          />
+          <small className='form-text'>Fill in your major.</small>
         </div>
         <div className='form-group'>
           <input
@@ -117,18 +130,7 @@ const EditProfile = ({
             Please fill in your personal website if you have one?
           </small>
         </div>
-        {/* <div className='form-group'>
-          <input
-            type='text'
-            placeholder='Location'
-            name='location'
-            value={location}
-            onChange={e => onChange(e)}
-          />
-          <small className='form-text'>
-            City & state suggested (eg. Boston, MA)
-          </small>
-        </div> */}
+
         <div className='form-group'>
           <input
             type='text'

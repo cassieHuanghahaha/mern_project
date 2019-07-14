@@ -24,8 +24,8 @@ const SearchProfiles = ({ searchProfiles, auth, errors }) => {
         <textarea
           name='text'
           cols='10'
-          rows='1'
-          placeholder='Name/University/Company/Skill...'
+          rows='2'
+          placeholder='Name/College/Major/Skill/Class...'
           value={text}
           onChange={e => setText(e.target.value)}
           required
@@ -37,7 +37,7 @@ const SearchProfiles = ({ searchProfiles, auth, errors }) => {
 };
 
 SearchProfiles.propTypes = {
-  getProfiles: PropTypes.func.isRequired,
+  searchProfiles: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };

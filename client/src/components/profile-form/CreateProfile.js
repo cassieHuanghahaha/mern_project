@@ -8,6 +8,7 @@ const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
     classtoken: "",
     college: "",
+    major: "",
     website: "",
     location: "",
     status: "",
@@ -28,6 +29,7 @@ const CreateProfile = ({ createProfile, history }) => {
     classtoken,
     college,
     location,
+    major,
     status,
     skills,
     githubusername,
@@ -85,12 +87,24 @@ const CreateProfile = ({ createProfile, history }) => {
         <div className='form-group'>
           <input
             type='text'
+            placeholder='* Major'
+            name='major'
+            value={major}
+            onChange={e => onChange(e)}
+          />
+          <small className='form-text'>Let us know your major.</small>
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
             placeholder='Website'
             name='website'
             value={website}
             onChange={e => onChange(e)}
           />
-          <small className='form-text'>Do you have a personal website?</small>
+          <small className='form-text'>
+            Fill in if you have a personal website?
+          </small>
         </div>
         {/* <div className='form-group'>
           <input

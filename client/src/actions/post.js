@@ -14,7 +14,7 @@ import {
 // Get posts
 export const getPosts = () => async dispatch => {
   try {
-    const res = await axios.get("api/posts");
+    const res = await axios.get("/api/posts");
     dispatch({
       type: GET_POSTS,
       payload: res.data
@@ -31,6 +31,7 @@ export const getPosts = () => async dispatch => {
 export const getPost = id => async dispatch => {
   try {
     const res = await axios.get(`/api/posts/${id}`);
+    console.log(res);
     dispatch({
       type: GET_POST,
       payload: res.data
@@ -47,6 +48,7 @@ export const getPost = id => async dispatch => {
 export const addLike = id => async dispatch => {
   try {
     const res = await axios.put(`api/posts/like/${id}`);
+
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data }
@@ -63,6 +65,7 @@ export const addLike = id => async dispatch => {
 export const removeLike = id => async dispatch => {
   try {
     const res = await axios.put(`api/posts/unlike/${id}`);
+    // console.log(res);
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data }
@@ -78,7 +81,8 @@ export const removeLike = id => async dispatch => {
 // Delete posts
 export const deletePost = id => async dispatch => {
   try {
-    const res = await axios.get(`api/posts/${id}`);
+    const res = await axios.delete(`/api/posts/${id}`);
+    // console.log(res);
     dispatch({
       type: DELETE_POST,
       payload: id
@@ -154,5 +158,28 @@ export const deleteComment = (postId, commentId) => async dispatch => {
     //   type: POST_ERROR,
     //   payload: { msg: err.response.statusText, status: err.response.status }
     // });
+  }
+};
+
+// Search posts
+export const searchPosts = searchString => async dispatch => {
+  // dispatch(setProfileLoading());
+
+  var postSearch = "/api/post/all";
+
+  if (searchString) {
+    postSearch = "/api/search/posts/" + searchString;
+  }
+  try {
+    const res = await axios.get(postSearch);
+    dispatch({
+      type: GET_POSTS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
   }
 };

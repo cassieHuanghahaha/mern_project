@@ -39,6 +39,10 @@ router.post(
       check("status", "Status is required")
         .not()
         .isEmpty(),
+
+      check("major", "Major is required")
+        .not()
+        .isEmpty(),
       check("skills", "Skill is required")
         .not()
         .isEmpty()
@@ -51,6 +55,7 @@ router.post(
     }
     const {
       website,
+      major,
       college,
       location,
       classtoken,
@@ -71,6 +76,7 @@ router.post(
 
     if (college) profileFields.college = college;
     if (location) profileFields.location = location;
+    if (major) profileFields.major = major;
     if (classtoken) {
       profileFields.classtoken = classtoken
         .split(",")
